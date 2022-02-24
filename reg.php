@@ -65,8 +65,10 @@ if(isset($_POST['sub'])){
                 </tr>
                 <tr>
                     <td>
-                        <input type="submit" value="submit" name="sub">
-                               
+                        <input type="submit" value="submit" name="sub">         
+                    </td>
+                    <td>
+                        <a href="login.php"> Login</a>
                     </td>
                 </tr>
             </table>
