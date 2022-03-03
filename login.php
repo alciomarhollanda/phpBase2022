@@ -2,9 +2,11 @@
 
 include'connect.php';
 
+// is set 
 if(isset($_POST['sub'])){
     $u=$_POST['user'];
     $p=$_POST['pass'];
+    
     $s= "select * from reg where username='$u' and password= '$p'";   
    $qu= mysqli_query($con, $s);
    if(mysqli_num_rows($qu)>0){
