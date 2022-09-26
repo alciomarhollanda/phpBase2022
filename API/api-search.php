@@ -8,17 +8,17 @@ $data = json_decode(file_get_contents("php://input"), true);
 
 $psearch = $data["search"];
 
-require_once "dbconfig.php";
+require_once "../connect.php";
 
-echo $query = "SELECT * FROM tbl_product WHERE product_name LIKE '%".$psearch."%' ";
+$query = "SELECT * FROM reg WHERE name LIKE '%$psearch%'; ";
 
-$result = mysqli_query($conn, $query) or die("Search Query Failed.");
+$result = mysqli_query($con, $query) or die("Search Query Failed.");
 
 $count = mysqli_num_rows($result);
 
 if($count > 0)
 {	
-	$row = mysqli_fetch_all($result, MYSQL_ASSOC);
+	$row = mysqli_fetch_all($result, MYSQLI_ASSOC);
 	
 	echo json_encode($row);
 }

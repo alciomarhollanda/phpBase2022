@@ -10,17 +10,17 @@ $data = json_decode(file_get_contents("php://input"), true);
 
 $pid = $data["id"];
 
-require_once "dbconfig.php";
+require_once "../connect.php";
 
-echo $query = "DELETE FROM tbl_product WHERE product_id='".$pid."' ";
+echo $query = "delete from reg where id =$pid";
 
-if(mysqli_query($conn, $query) or die("Delete Query Failed"))
+if(mysqli_query($con, $query) or die("Delete Query Failed"))
 {	
-	echo json_encode(array("message" => "Product Delete Successfully", "status" => true));	
+	echo json_encode(array("message" => "User Delete Successfully", "status" => true));	
 }
 else
 {	
-	echo json_encode(array("message" => "Failed Product Not Deleted", "status" => false));	
+	echo json_encode(array("message" => "Failed User Not Deleted", "status" => false));	
 }
 
 ?>

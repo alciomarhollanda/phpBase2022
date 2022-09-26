@@ -8,23 +8,27 @@ Acess-Control-Allow-Methods, Authorization");
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-$pid = $data["id"];
 $pname = $data["name"];
-$pprice = $data["price"];
+$pusername = $data["username"];
+$ppassword = $data["password"];
+$pcity = $data["city"];
+$pimage = $data["image"];
+$pgender = $data["gender"];
+$pid = $data["id"];
 
-require_once "dbconfig.php";
+require_once "../connect.php";
 
-echo $query = "UPDATE tbl_product SET product_name= '".$pname."' , 
-                                 product_price= '".$pprice."' 
-                           WHERE product_id='".$pid."' ";
+echo $query = "UPDATE reg set name='$pname', username='$pusername', 
+      password='$ppassword', city='$pcity', image='$pimage', gender='$pgender' 
+      where id=$pid;";
 
-if(mysqli_query($conn, $query) or die("Update Query Failed"))
+if(mysqli_query($con, $query) or die("Update Query Failed"))
 {	
-	echo json_encode(array("message" => "Product Update Successfully", "status" => true));	
+	echo json_encode(array("message" => "User Update Successfully", "status" => true));	
 }
 else
 {	
-	echo json_encode(array("message" => "Failed Product Not Updated", "status" => false));	
+	echo json_encode(array("message" => "Failed User Not Updated", "status" => false));	
 }
 
 ?>
